@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="N-Gram-MapReduce:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dfcb66d-cc31-492c-8102-dc11f82b9df0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Mapper/AggregateUniGramMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Mapper/BiGramLMProbabilityMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Mapper/UniGramCountMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/NGramMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Reducer/AggregateUniGramReducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Reducer/UniGramCountReducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
+    <list default="true" id="7dfcb66d-cc31-492c-8102-dc11f82b9df0" name="Changes" comment="Commit-1">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/N_Gram_MapReduce_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Mapper/BiGramLMProbabilityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Mapper/BiGramLMProbabilityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Mapper/UniGramCountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Mapper/UniBiGramCountMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/NGramMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/NGramMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +62,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
@@ -114,12 +110,33 @@
       <option name="presentableId" value="Default" />
       <updated>1676405584109</updated>
       <workItem from="1676405585469" duration="12167000" />
-      <workItem from="1676481190257" duration="17653000" />
+      <workItem from="1676481190257" duration="17994000" />
+      <workItem from="1676510954241" duration="2540000" />
+      <workItem from="1676514421018" duration="1274000" />
+      <workItem from="1676524595384" duration="76000" />
+      <workItem from="1676568402962" duration="9046000" />
     </task>
+    <task id="LOCAL-00001" summary="Commit-1">
+      <created>1676501231256</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676501231256</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
+    <option featureType="dependencySupport" implementationName="java:org.apache.hadoop:hadoop-common" />
+    <option featureType="dependencySupport" implementationName="java:javax.ws.rs:javax.ws.rs-api" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit-1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit-1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

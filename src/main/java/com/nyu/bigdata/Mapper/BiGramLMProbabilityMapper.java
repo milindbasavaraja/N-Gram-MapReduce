@@ -16,7 +16,7 @@ public class BiGramLMProbabilityMapper extends Mapper<LongWritable, Text,Text, D
 
     @Override
     public void map(LongWritable key,Text value,Context context) throws IOException, InterruptedException {
-        logger.info("The key is: {} and value is:{} ",key,value);
+        //logger.info("The key is: {} and value is:{} ",key,value);
         String biGramDetails = value.toString().split("\t")[1];
         String uniGramDetails = value.toString().split("\t")[2];
         long uniGramWordCount = Long.parseLong(uniGramDetails.split(" ")[1]);

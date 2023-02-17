@@ -1,6 +1,5 @@
 package com.nyu.bigdata.Mapper;
 
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -9,9 +8,9 @@ import org.slf4j.LoggerFactory;
 
 ;import java.io.IOException;
 
-public class UniGramCountMapper extends Mapper<LongWritable, Text,Text, Text> {
+public class UniBiGramCountMapper extends Mapper<LongWritable, Text,Text, Text> {
     private final static String DEFAULT_VALUE = "Default_Value";
-    private final Logger logger = LoggerFactory.getLogger(UniGramCountMapper.class);
+    private final Logger logger = LoggerFactory.getLogger(UniBiGramCountMapper.class);
     @Override
     public void map(LongWritable key,Text value,Context context) throws IOException, InterruptedException {
 
