@@ -1,0 +1,47 @@
+ The unigram is: a and its count is: 1
+ The bigram is: a cat and its count is: 1
+
+ The unigram is: a and its count is: 1
+ The bigram is: a dog and its count is: 1
+
+ The unigram is: bad and its count is: 1
+ The bigram is: Default_Value and its count is: 0
+
+ The unigram is: cat and its count is: 2
+ The bigram is: Default_Value and its count is: 0
+
+ The unigram is: dog and its count is: 1
+ The bigram is: Default_Value and its count is: 0
+
+ The unigram is: i and its count is: 1
+ The bigram is: i love and its count is: 1
+
+ The unigram is: is and its count is: 2
+ The bigram is: is a and its count is: 2
+
+ The unigram is: is and its count is: 1
+ The bigram is: is bad and its count is: 1
+
+ The unigram is: is and its count is: 1
+ The bigram is: is my and its count is: 1
+
+ The unigram is: issue and its count is: 1
+ The bigram is: issue is and its count is: 1
+
+ The unigram is: love and its count is: 1
+ The bigram is: love my and its count is: 1
+
+ The unigram is: my and its count is: 1
+ The bigram is: my cat and its count is: 1
+
+ The unigram is: my and its count is: 1
+ The bigram is: my name and its count is: 1
+
+ The unigram is: name and its count is: 1
+ The bigram is: Default_Value and its count is: 0
+
+ The unigram is: this and its count is: 3
+ The bigram is: this is and its count is: 3
+
+ The unigram is: this and its count is: 1
+ The bigram is: this issue and its count is: 1

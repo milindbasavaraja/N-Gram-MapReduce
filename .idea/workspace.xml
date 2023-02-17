@@ -10,15 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dfcb66d-cc31-492c-8102-dc11f82b9df0" name="Changes" comment="Commit-1">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/N_Gram_MapReduce_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Mapper/BiGramLMProbabilityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Mapper/BiGramLMProbabilityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Mapper/UniGramCountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/Mapper/UniBiGramCountMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/NGramMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nyu/bigdata/NGramMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/N_Gram_MapReduce_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +111,7 @@
       <workItem from="1676510954241" duration="2540000" />
       <workItem from="1676514421018" duration="1274000" />
       <workItem from="1676524595384" duration="76000" />
-      <workItem from="1676568402962" duration="9046000" />
+      <workItem from="1676568402962" duration="9365000" />
     </task>
     <task id="LOCAL-00001" summary="Commit-1">
       <created>1676501231256</created>
