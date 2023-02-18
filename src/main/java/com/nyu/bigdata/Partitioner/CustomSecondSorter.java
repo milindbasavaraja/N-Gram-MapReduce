@@ -4,6 +4,12 @@ import com.nyu.bigdata.model.StringPair;
 import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.WritableComparator;
 
+
+/**
+ * CustomSecondSorter to sort the groupings when the key is same.
+ * This ensures that the reducer - TransformUniBiGramReducer, always receives UniGram and its count
+ * before the arrival of BiGram which will help us to concatenate the count of UniGram to the BiGram.
+ */
 public class CustomSecondSorter extends WritableComparator {
     protected CustomSecondSorter() {
         super(StringPair.class, true);

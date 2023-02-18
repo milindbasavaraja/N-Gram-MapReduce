@@ -4,6 +4,11 @@ import com.nyu.bigdata.model.StringPair;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
 
+/**
+ * Custom Partitioner for the custom composite key of type StringPair
+ * Partition is done base on first part of composite key which is UniGram.
+ *
+ */
 public class CustomPartitioner extends Partitioner<StringPair, Text> {
 
 

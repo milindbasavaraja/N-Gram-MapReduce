@@ -34,10 +34,11 @@ public class TransformUniBiGramReducer extends Reducer<StringPair,Text,StringPai
 
     @Override
     public void reduce(StringPair key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        logger.info("The key is:{}",key);
+        //get the UniGram
         String uniGram = key.getFirst().toString();
         String uniGramCount = null;
         for(Text value:values){
+            //Split value to check if the incoming value is UniGram/BiGram
             String[] valueArray = value.toString().split("\t");
             if(valueArray[0].split(" ").length == 1){
 
@@ -48,27 +49,7 @@ public class TransformUniBiGramReducer extends Reducer<StringPair,Text,StringPai
                 context.write(key,new Text(finalValue));
             }
         }
-       /* Map<String,String> biGramMapCache = new HashMap<>();
-        long uniGramWordCount = 0;
-        String uniGramWord = key.toString();
 
-        for(Text value:values){
-            String[] valueDetails = value.toString().split("\t");
-            String uniGramDetails = valueDetails[1];
-            String biGramDetails = valueDetails[0];
-            String biGramWord  =biGramDetails.split(" ")[0]+" " + biGramDetails.split(" ")[1];
-            biGramMapCache.put(biGramWord,biGramDetails);
-            long uniGramCount = Long.parseLong(uniGramDetails.split(" ")[1]);
-
-            uniGramWordCount = uniGramWordCount +  uniGramCount;
-        }
-
-        String finalUniGramDetail = uniGramWord + " "+uniGramWordCount;
-
-        for(String biGramWord : biGramMapCache.keySet()){
-            String finalValue = biGramMapCache.get(biGramWord)+"\t" + finalUniGramDetail;
-            context.write(new Text(biGramWord),new Text(finalValue));
-        }*/
 
 
     }

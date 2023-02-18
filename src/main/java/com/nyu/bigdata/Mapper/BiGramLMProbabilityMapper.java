@@ -10,6 +10,15 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
+/**
+ * This class is responsible for finding out the Probabilities.
+ * Input ---> key: LongWritable, Value ----> Text
+ * Eg: The Input value will look as follows:
+ *  united states 2107	united 2735
+ *  Explanation of input
+ *  1.  String "united states 2107" states "united states" as BiGram and 2107 is the count of the BiGram.
+ *  2.  String "united 2735" states "united" as UniGram and 2735 is the count of UniGram.
+ */
 public class BiGramLMProbabilityMapper extends Mapper<LongWritable, Text,Text, DoubleWritable> {
 
     private final Logger logger = LoggerFactory.getLogger(BiGramLMProbabilityMapper.class);
@@ -22,7 +31,7 @@ public class BiGramLMProbabilityMapper extends Mapper<LongWritable, Text,Text, D
         long uniGramWordCount = Long.parseLong(uniGramDetails.split(" ")[1]);
 
 
-
+        //Finding required probability
         if(biGramDetails.split(" ").length > 2){
             String[] bigGramWordDetails = biGramDetails.split(" ");
             String biGramWord = bigGramWordDetails[0] + " "+bigGramWordDetails[1];

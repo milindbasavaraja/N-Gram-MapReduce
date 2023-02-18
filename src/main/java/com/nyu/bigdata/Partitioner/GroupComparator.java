@@ -4,6 +4,9 @@ import com.nyu.bigdata.model.StringPair;
 import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.WritableComparator;
 
+/**
+ * GroupComparator to sort the keys and if keys are same them group them.
+ */
 public class GroupComparator extends WritableComparator {
 
     protected GroupComparator(){

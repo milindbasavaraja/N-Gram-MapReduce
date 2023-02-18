@@ -7,12 +7,16 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class TransformUniBiGramMapper extends Mapper<LongWritable,Text, StringPair,Text> {
-
+/**
+ * This class is responsible to create composite key as follows:
+ * If word is UniGram ----> Composite key: (UniGram,UniGram) .
+ * If word is BiGram ----> Composite key: (UniGram,BiGram and BiGram count) .
+ */
+public class TransformUniBiGramMapper extends Mapper<LongWritable, Text, StringPair, Text> {
 
 
     @Override
-    public void map(LongWritable inputKey,Text inputValue,Context context) throws IOException, InterruptedException {
+    public void map(LongWritable inputKey, Text inputValue, Context context) throws IOException, InterruptedException {
         String[] words = inputValue.toString().split("\t");
         String word = words[0];
         String wordCount = words[1];
@@ -20,23 +24,14 @@ public class TransformUniBiGramMapper extends Mapper<LongWritable,Text, StringPa
 
         String firstString = keys[0];
 
+        // check if input line is UniGram/BiGram.
+        if (keys.length == 1) {
 
-        if(keys.length == 1){
-
-            context.write(new StringPair(firstString,firstString),new Text(wordCount));
-        }else{
-            String secondString = keys[0]+" "+keys[1];
-            context.write(new StringPair(firstString,secondString),inputValue);
+            context.write(new StringPair(firstString, firstString), new Text(wordCount));
+        } else {
+            String secondString = keys[0] + " " + keys[1];
+            context.write(new StringPair(firstString, secondString), inputValue);
         }
-
-
-
-       /* String biGramDetails = value[1];
-        String uniGramDetails = value[2];
-        String uniGramWord  = value[2].split(" ")[0];
-
-        context.write(new Text(uniGramWord),new Text(value[1] + "\t"+value[2]));
-*/
 
     }
 

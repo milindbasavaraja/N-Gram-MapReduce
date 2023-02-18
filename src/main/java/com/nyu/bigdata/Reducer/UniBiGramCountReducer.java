@@ -48,42 +48,5 @@ public class UniBiGramCountReducer extends Reducer<Text, LongWritable, Text, Lon
             context.write(key,new LongWritable(biGramCount));
         }
 
-
-        //logger.info("The Uni-Gram Count Reducer started............");
-        /*long uniGramCount = 0;
-        long biGramCount = 0;
-        String biGramWord = null;
-        String uniGramWord = null;
-
-        for(Text value: values){
-            String[] customValueArray = value.toString().split("\t");
-            String biGramWithCountString = customValueArray[0];
-            String uniGramWithCountString = customValueArray[1];
-
-            String[]  biGramWordDetailArray = biGramWithCountString.split(" ");
-            if(!biGramWordDetailArray[0].equalsIgnoreCase("Default_Value")){
-                long biGramWordCount = Long.parseLong(biGramWordDetailArray[2]);
-                biGramWord = biGramWordDetailArray[0] + " "+biGramWordDetailArray[1];
-                biGramCount = biGramCount + biGramWordCount;
-            }else{
-                biGramWord = "Default_Value";
-            }
-            String[] uniGramWordDetailArray = uniGramWithCountString.split(" ");
-            long uniGramWordCount = Long.parseLong(uniGramWordDetailArray[1]);
-            uniGramWord = uniGramWordDetailArray[0];
-            uniGramCount = uniGramCount + uniGramWordCount;
-
-
-        }
-        context.getCounter(NGramMain.CustomCounter.TOTAL_UNI_GRAM_COUNT).increment(uniGramCount);
-        context.getCounter(NGramMain.CustomCounter.TOTAL_BI_GRAM_COUNT).increment(biGramCount);
-
-
-
-        String finalValueString = biGramWord + " "+biGramCount + "\t"+uniGramWord + " "+uniGramCount;
-
-        context.write(new Text(biGramWord),new Text(finalValueString));*/
-
-
     }
 }

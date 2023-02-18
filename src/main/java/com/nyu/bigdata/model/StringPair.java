@@ -9,26 +9,28 @@ import java.io.DataOutput;
 import java.io.IOException;
 import java.util.Objects;
 
+
+/**
+ * Custom Hadoop Writable component which acts as composite key for a job
+ */
 public class StringPair implements WritableComparable<StringPair> {
-
-
     private Text first;
     private Text second;
 
 
-    public StringPair(){
-        set(new Text(),new Text());
+    public StringPair() {
+        set(new Text(), new Text());
     }
 
-    public StringPair(String first,String second){
-        set(new Text(first),new Text(second));
+    public StringPair(String first, String second) {
+        set(new Text(first), new Text(second));
     }
 
-    public StringPair(Text first,Text second){
-        set(first,second);
+    public StringPair(Text first, Text second) {
+        set(first, second);
     }
 
-    public void set(Text first,Text second){
+    public void set(Text first, Text second) {
         this.first = first;
         this.second = second;
     }
@@ -56,7 +58,7 @@ public class StringPair implements WritableComparable<StringPair> {
 
     @Override
     public boolean equals(Object o) {
-        if(o instanceof StringPair){
+        if (o instanceof StringPair) {
             StringPair sp = (StringPair) o;
             return first.equals(sp.first) && second.equals(sp.second);
         }
@@ -72,7 +74,7 @@ public class StringPair implements WritableComparable<StringPair> {
     @Override
     public int compareTo(StringPair sp) {
         int cmp = first.compareTo(sp.getFirst());
-        if(cmp != 0){
+        if (cmp != 0) {
             return cmp;
         }
 
