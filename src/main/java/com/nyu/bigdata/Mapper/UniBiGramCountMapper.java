@@ -8,8 +8,10 @@ import org.slf4j.LoggerFactory;
 
 ;import java.io.IOException;
 
-public class UniBiGramCountMapper extends Mapper<LongWritable, Text,Text, Text> {
+public class UniBiGramCountMapper extends Mapper<LongWritable, Text,Text, LongWritable> {
     private final static String DEFAULT_VALUE = "Default_Value";
+
+    private final static LongWritable ONE = new LongWritable(1);
     private final Logger logger = LoggerFactory.getLogger(UniBiGramCountMapper.class);
     @Override
     public void map(LongWritable key,Text value,Context context) throws IOException, InterruptedException {
@@ -26,21 +28,18 @@ public class UniBiGramCountMapper extends Mapper<LongWritable, Text,Text, Text> 
         String[] words = lowerCaseLine.split(" ");
         for(int i=0;i<words.length;i++){
             String biGramWord = DEFAULT_VALUE;
-            String biGramWordKey = DEFAULT_VALUE;
+
             if(i != words.length-1){
                 biGramWord = words[i]+" "+words[i+1];
-                biGramWordKey = words[i]+words[i+1];
             }
             String uniGramWord = words[i];
 
 
-            String finalValue = biGramWord + " " + "1" + "\t"+uniGramWord+" "+"1";
-            if(biGramWord.equalsIgnoreCase(DEFAULT_VALUE)){
-                context.write(new Text(uniGramWord),new Text(finalValue));
+
+            if(!biGramWord.equalsIgnoreCase(DEFAULT_VALUE)){
+                context.write(new Text(biGramWord),ONE);
             }
-            else{
-                context.write(new Text(biGramWordKey),new Text(finalValue));
-            }
+            context.write(new Text(uniGramWord),ONE);
 
         }
 
