@@ -13,12 +13,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This Reducer is responsible to find Total Uni-Gram and Bi-Gram count.
- * It also calculates Uni-Gram and Bi-Gram count
- * Input Format ---> Key: [{Values}] => Text: [{LongWritable}]
- * Eg: zulu:[{1,1,1,1}]
- * Output Format ---> (Key,Value) => (Text,LongWritable)
- * Eg: zulus, 4
+ * This Reducer does the cleaning process. It concatenates the BiGram with the UniGram (The first word of BiGram).
+ * StringPair -> Custom key class responsible for Composite Key
+ * Input Format ---> Key: [{Values}] => StringPair: [{Text}]
+ * Eg: StringPair{first=replied, second=replied take}: [{replied 196},{replied take 1}]
+ * Explanation of input
+ *  1.  StringPair consists of 2 texts which creates a composite key
+ *  2.  the first part of StringPair is UniGram
+ *  3.  the second part of StringPair is BiGram, if present else, UniGram
+ *  4.  the value is the BiGrams/UniGrams starting with that UniGram.
+ * Output Format ---> (Key,Value) => (StringPair,Text)
+ * Eg: (StringPair{first=replied, second=replied take},replied take 1	replied 196)
+ * Explanation of output
+ *  1. replied take 1 is BiGram and its count
+ *  2. replied 196 is UniGram and its count
  */
 public class TransformUniBiGramReducer extends Reducer<StringPair,Text,StringPair,Text> {
 
