@@ -37,6 +37,7 @@ public class NGramMain {
         uniBiGramWordCountJob.setReducerClass(UniBiGramCountReducer.class);
         uniBiGramWordCountJob.setOutputKeyClass(Text.class);
         uniBiGramWordCountJob.setOutputValueClass(LongWritable.class);
+        uniBiGramWordCountJob.setNumReduceTasks(3);
 
 
         Path inputFilePath = new Path(args[1]);
@@ -63,6 +64,7 @@ public class NGramMain {
         aggregatingUniGramCount.setGroupingComparatorClass(GroupComparator.class);
         aggregatingUniGramCount.setOutputKeyClass(StringPair.class);
         aggregatingUniGramCount.setOutputValueClass(Text.class);
+        aggregatingUniGramCount.setNumReduceTasks(3);
 
 
         Path inputFilePathForBiGram = new Path(args[2]);
@@ -81,6 +83,7 @@ public class NGramMain {
         probabilityBiGramJob.getConfiguration().setLong(CustomCounter.TOTAL_UNI_GRAM_COUNT.name(), totalUniGramsCount.getValue());
         probabilityBiGramJob.setJarByClass(NGramMain.class);
         probabilityBiGramJob.setMapperClass(BiGramLMProbabilityMapper.class);
+        probabilityBiGramJob.setNumReduceTasks(3);
 
         probabilityBiGramJob.setNumReduceTasks(0);
         probabilityBiGramJob.setOutputKeyClass(Text.class);
