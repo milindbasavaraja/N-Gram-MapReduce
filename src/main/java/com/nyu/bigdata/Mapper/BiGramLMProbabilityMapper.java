@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 /**
- * This class is responsible for finding out the Probabilities.
+ * This class is responsible for making all required values available for Reducer.
  * Input ---> key: LongWritable, Value ----> Text
  * Eg: The Input value will look as follows:
  *  united states 2107	united 2735
@@ -19,7 +19,7 @@ import java.io.IOException;
  *  1.  String "united states 2107" states "united states" as BiGram and 2107 is the count of the BiGram.
  *  2.  String "united 2735" states "united" as UniGram and 2735 is the count of UniGram.
  */
-public class BiGramLMProbabilityMapper extends Mapper<LongWritable, Text,Text, DoubleWritable> {
+public class BiGramLMProbabilityMapper extends Mapper<LongWritable, Text,Text, Text> {
 
     private final Logger logger = LoggerFactory.getLogger(BiGramLMProbabilityMapper.class);
 
@@ -40,10 +40,10 @@ public class BiGramLMProbabilityMapper extends Mapper<LongWritable, Text,Text, D
             long totalBiGramWord = context.getConfiguration().getLong(NGramMain.CustomCounter.TOTAL_BI_GRAM_COUNT.name(), 0);
             long totalUniGramWord = context.getConfiguration().getLong(NGramMain.CustomCounter.TOTAL_UNI_GRAM_COUNT.name(), 0);
 
-            double probabilityW1W2 = (double)biGramWordCount/totalBiGramWord;
-            double probabilityW1 = (double)uniGramWordCount/totalUniGramWord;
-            double finalProbability = probabilityW1W2/probabilityW1;
-            context.write(new Text(biGramWord),new DoubleWritable(finalProbability));
+
+
+            String finalValue = biGramWordCount + " "+totalBiGramWord+"\t"+uniGramWordCount+" "+totalUniGramWord;
+            context.write(new Text(biGramWord),new Text(finalValue));
 
 
         }

@@ -5,7 +5,7 @@ The jar is present in out/artifacts/N_Gram_MapReduce_jar
 
 **Command to Run Jar**
 
-> hadoop jar N-Gram-MapReduce.jar NGramMain mb7949-bd23/hw1dir mb7949-bd23/hw1.2/output-bi-uni-gram-1 mb7949-bd23/hw1.2/output-clean-1 mb7949-bd23/hw1.2/output-probability-1
+> hadoop jar N-Gram-MapReduce.jar NGramMain mb7949-bd23/hw1dir mb7949-bd23/hw1.2/output-bi-uni-gram-1 mb7949-bd23/hw1.2/output-clean-1 mb7949-bd23/hw1.2/output-probability-1 mb7949-bd23/hw1.2/output-extra-credits
 
 **Explanation of the Command**
 
@@ -17,8 +17,9 @@ The jar is present in out/artifacts/N_Gram_MapReduce_jar
 
 **mb7949-bd23/hw1.2/output-clean-1** is the third argument, which is output of second Map-Reducer job.
 
-**mb7949-bd23/hw1.2/output-probability-1** is the third argument, which is the final output.
+**mb7949-bd23/hw1.2/output-probability-1** is the third argument, which is the final output of question 2.
 
+**mb7949-bd23/hw1.2/output-extra-credits** is the fourth argument, which is the extra credit output.
 
 
 ### MapReducer Jobs Explanation
@@ -27,4 +28,6 @@ The jar is present in out/artifacts/N_Gram_MapReduce_jar
 
 2. In Second MapReducer job, I create a custom **WritableComparable** which will be used as a composite key in my Mapper and Reducer. The composite key is used for Secondary Sorting. Here, I am using custom Partitioner, custom Sorter and custom Group Sorter.
 
-3. In third Mapper job, I calculate the probability of **P(w2|w1)**.
+3. In third MapperReducer job, I calculate the probability of **P(w2|w1)**.
+
+4. In fourth MapperReducer job, I filter out biGram starting with "states" word and find the maximum probability. 

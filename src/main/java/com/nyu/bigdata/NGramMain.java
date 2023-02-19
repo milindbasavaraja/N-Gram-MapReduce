@@ -1,11 +1,14 @@
 package com.nyu.bigdata;
 
 import com.nyu.bigdata.Mapper.BiGramLMProbabilityMapper;
+import com.nyu.bigdata.Mapper.ExtraCreditMapper;
 import com.nyu.bigdata.Mapper.TransformUniBiGramMapper;
 import com.nyu.bigdata.Mapper.UniBiGramCountMapper;
 import com.nyu.bigdata.Partitioner.CustomPartitioner;
 import com.nyu.bigdata.Partitioner.CustomSecondSorter;
 import com.nyu.bigdata.Partitioner.GroupComparator;
+import com.nyu.bigdata.Reducer.BiGramLMProbabilityReducer;
+import com.nyu.bigdata.Reducer.ExtraCreditReducer;
 import com.nyu.bigdata.Reducer.TransformUniBiGramReducer;
 import com.nyu.bigdata.Reducer.UniBiGramCountReducer;
 import com.nyu.bigdata.model.StringPair;
@@ -29,6 +32,8 @@ public class NGramMain {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
+
+        //Job to count Uni-Bi-Gram words
         Configuration uniGramConf = new Configuration();
 
         Job uniBiGramWordCountJob = Job.getInstance(uniGramConf, "UniGram Word Count");
@@ -50,6 +55,7 @@ public class NGramMain {
         Counter totalBiGramsCount = uniBiGramWordCountJob.getCounters().findCounter(CustomCounter.TOTAL_BI_GRAM_COUNT);
 
 
+        //Job to concatenate BiGram details with UniGram details.
         Configuration aggrUniGramCount = new Configuration();
 
         Job aggregatingUniGramCount = Job.getInstance(aggrUniGramCount, "Aggregating UniGramCount");
@@ -73,9 +79,9 @@ public class NGramMain {
         FileOutputFormat.setOutputPath(aggregatingUniGramCount, outputFilePathForBiGram);
 
         aggregatingUniGramCount.waitForCompletion(true);
-        //System.exit(aggregatingUniGramCount.waitForCompletion(true)? 0 : 1);
 
 
+        // Job to calculate probability
         Configuration probabilityBiGramConf = new Configuration();
 
         Job probabilityBiGramJob = Job.getInstance(probabilityBiGramConf, "BiGram LM Probability");
@@ -84,14 +90,34 @@ public class NGramMain {
         probabilityBiGramJob.setJarByClass(NGramMain.class);
         probabilityBiGramJob.setMapperClass(BiGramLMProbabilityMapper.class);
         probabilityBiGramJob.setNumReduceTasks(3);
-
-        probabilityBiGramJob.setNumReduceTasks(0);
+        probabilityBiGramJob.setReducerClass(BiGramLMProbabilityReducer.class);
         probabilityBiGramJob.setOutputKeyClass(Text.class);
-        probabilityBiGramJob.setOutputValueClass(DoubleWritable.class);
+        probabilityBiGramJob.setOutputValueClass(Text.class);
         Path inputFilePathForProbabilityBiGramLM = new Path(args[3]);
         Path outputFilePathForProbabilityBiGramLM = new Path(args[4]);
         FileInputFormat.addInputPath(probabilityBiGramJob, inputFilePathForProbabilityBiGramLM);
         FileOutputFormat.setOutputPath(probabilityBiGramJob, outputFilePathForProbabilityBiGramLM);
-        System.exit(probabilityBiGramJob.waitForCompletion(true) ? 0 : 1);
+        probabilityBiGramJob.waitForCompletion(true);
+
+
+
+        //Job to find out maximum probability of the biGram starting with states word.
+        Configuration extraCreditProbability = new Configuration();
+
+        Job extraCreditProbabilityJob = Job.getInstance(extraCreditProbability, "Extra Credits Job");
+        extraCreditProbabilityJob.setJarByClass(NGramMain.class);
+        extraCreditProbabilityJob.setMapperClass(ExtraCreditMapper.class);
+        extraCreditProbabilityJob.setReducerClass(ExtraCreditReducer.class);
+
+        extraCreditProbabilityJob.setNumReduceTasks(1);
+        extraCreditProbabilityJob.setOutputKeyClass(Text.class);
+        extraCreditProbabilityJob.setOutputValueClass(Text.class);
+
+        Path inputFilePathForExtraCreditProbabilityJob = new Path(args[4]);
+        Path outputFilePathForExtraCreditProbabilityJob = new Path(args[5]);
+        FileInputFormat.addInputPath(extraCreditProbabilityJob, inputFilePathForExtraCreditProbabilityJob);
+        FileOutputFormat.setOutputPath(extraCreditProbabilityJob, outputFilePathForExtraCreditProbabilityJob);
+        System.exit(extraCreditProbabilityJob.waitForCompletion(true) ? 0 : 1);
+
     }
 }
